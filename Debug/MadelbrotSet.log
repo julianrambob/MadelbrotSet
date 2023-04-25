@@ -1,0 +1,11 @@
+﻿  ComplexPlane.cpp
+C:\Users\w1553109\source\repos\MadelbrotSet\ComplexPlane.cpp(14,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\w1553109\source\repos\MadelbrotSet\ComplexPlane.cpp(15,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+C:\Users\w1553109\source\repos\MadelbrotSet\main.cpp(13,14): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\w1553109\source\repos\MadelbrotSet\main.cpp(14,15): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\w1553109\source\repos\MadelbrotSet\main.cpp(18,22): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\w1553109\source\repos\MadelbrotSet\main.cpp(18,15): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  Generating Code...
+C:\Users\w1553109\source\repos\MadelbrotSet\ComplexPlane.cpp(48): error C4716: 'ComplexPlane::countIterations': must return a value
+C:\Users\w1553109\source\repos\MadelbrotSet\ComplexPlane.cpp(32): error C4716: 'ComplexPlane::getView': must return a value
