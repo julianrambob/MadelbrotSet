@@ -47,7 +47,7 @@ void ComplexPlane::loadText(Text& text)
 //UML diagram says static?
 size_t ComplexPlane::countIterations(Vector2f coord)
 {
-
+	return 1;
 }
 
 //UML diagram says static?
