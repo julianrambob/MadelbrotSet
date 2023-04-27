@@ -1,4 +1,7 @@
 #include "ComplexPlane.h"
+#include <complex>
+
+using namespace std;
 
 ComplexPlane::ComplexPlane(float aspectRatio)
 {
@@ -47,11 +50,64 @@ void ComplexPlane::loadText(Text& text)
 //UML diagram says static?
 size_t ComplexPlane::countIterations(Vector2f coord)
 {
-	return 1;
+    complex<float> c(coord.x, coord.y);
+    complex<float> z(0, 0);
+    size_t counter;
+
+    for (int i = 0; i < 64/*MAX_ITER*/; i++)
+    {
+        counter = i + 1;
+        z = z * z + c;
+        if (abs(z) > 2.0)
+            return counter;
+    }
+    return counter;
 }
 
 //UML diagram says static?
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
+
+    int step = 64/*MAX_ITER*//5;
+
+    if (count == 64/*MAX_ITER*/)
+    {
+        r = 0;
+        g = 0;
+        b = 0;
+    }
+
+    else if (count >= 0 && count < step) 
+    {
+        r = 64;
+        g = 0;
+        b = 255;
+    }
+
+    else if (count >= step && count < 2 * step) 
+    {
+        r = 0;
+        g = 255;
+        b = 255;
+    }
+
+    else if (count >= 2 * step && count < 3 * step) 
+    {
+        r = 0;
+        g = 255;
+        b = 64;
+    }
+
+    else if (count >= 3 * step && count < 4 * step) 
+    {
+        r = 255;
+        g = 255;
+        b = 0;
+    }
+
+    else 
+    {
+        r, g, b = 255, 38, 0;
+    }
 
 }
