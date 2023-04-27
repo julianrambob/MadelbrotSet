@@ -26,8 +26,7 @@ int main()
 	VertexArray pixels(Points);
 	pixels.resize(height * width);
 
-	enum state {CALCULATING = 0, DISPLAYING};
-	state calc = CALCULATING;
+	bool calc = true;
 
 	Font f;
 	f.loadFromFile("ApeMount-WyPM9.ttf");
@@ -58,16 +57,22 @@ int main()
 			//mouse click event
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
+				calc = true;
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
+					Vector2f click = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
+					complex.setCenter(click);
 					complex.zoomIn();
 				}
 			}
 
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
+				calc = true;
 				if (event.mouseButton.button == sf::Mouse::Right)
 				{
+					Vector2f click = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
+					complex.setCenter(click);
 					complex.zoomOut();
 				}
 			}
@@ -84,7 +89,7 @@ int main()
 		*****************************************/
 
 
-		if (calc == CALCULATING)
+		if (calc)
 		{
 			for (int j = 0; j < width; j++)
 			{
@@ -100,7 +105,7 @@ int main()
 
 				}
 			}
-			calc = DISPLAYING;
+			calc = false;
 		}
 
 		complex.loadText(instructions);
@@ -114,6 +119,8 @@ int main()
 		window.clear();
 		// Draw our game scene here
 		window.draw(pixels);
+
+		complex.loadText(instructions);
 
 		window.draw(instructions);
 

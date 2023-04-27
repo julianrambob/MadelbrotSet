@@ -44,7 +44,11 @@ void ComplexPlane::setMouseLocation(Vector2f coord)
 
 void ComplexPlane::loadText(Text& text)
 {
-
+    stringstream output;
+    output << "Mandelbrot Set \n" << "Center: (" << m_view.getCenter().x << ", " << m_view.getCenter().y << ")\n"
+        << "Cursor: (" << m_mouseLocation.x << ", " << m_mouseLocation.y << ")\n"
+        << "Left-click to Zoom in \n" << "Right-click to Zoom out\n";
+    text.setString(output.str());
 }
 
 //UML diagram says static?
