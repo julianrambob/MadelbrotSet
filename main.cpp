@@ -13,7 +13,7 @@ int main()
 {
 	float width = sf::VideoMode::getDesktopMode().width;
 	float height = sf::VideoMode::getDesktopMode().height;
-	View mainView(FloatRect(0.0f, 0.0f, width, height));
+
 	// Create a video mode object
 	VideoMode vm(width, height);
 	// Create and open a window for the game
@@ -60,9 +60,10 @@ int main()
 				calc = true;
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
-					Vector2f click = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
+					Vector2f click = window.mapPixelToCoords(Mouse::getPosition(), complex.getView());
+					
+					complex.zoomIn();		
 					complex.setCenter(click);
-					complex.zoomIn();
 				}
 			}
 
@@ -71,15 +72,16 @@ int main()
 				calc = true;
 				if (event.mouseButton.button == sf::Mouse::Right)
 				{
-					Vector2f click = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
-					complex.setCenter(click);
+					Vector2f click = window.mapPixelToCoords(Mouse::getPosition(), complex.getView());
+					
 					complex.zoomOut();
+					complex.setCenter(click);
 				}
 			}
 
 			if (event.type == sf::Event::MouseMoved)
 			{
-				Vector2f cursor = window.mapPixelToCoords(Vector2i(event.mouseMove.x, event.mouseMove.y));
+				Vector2f cursor = window.mapPixelToCoords(Mouse::getPosition(), complex.getView());
 				complex.setMouseLocation(cursor);
 			}
 		}
@@ -114,7 +116,7 @@ int main()
 		Draw the scene
 		****************************************
 		*/
-		window.setView(mainView);
+
 		// Clear everything from the last run frame
 		window.clear();
 		// Draw our game scene here

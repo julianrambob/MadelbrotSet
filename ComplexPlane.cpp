@@ -49,7 +49,7 @@ void ComplexPlane::loadText(Text& text)
         << "Cursor: (" << m_mouseLocation.x << ", " << m_mouseLocation.y << ")\n"
         << "Left-click to Zoom in \n" << "Right-click to Zoom out\n";
     text.setString(output.str());
-}
+}   
 
 //UML diagram says static?
 size_t ComplexPlane::countIterations(Vector2f coord)
@@ -58,7 +58,7 @@ size_t ComplexPlane::countIterations(Vector2f coord)
     complex<float> z(0, 0);
     size_t counter;
 
-    for (int i = 0; i < 64/*MAX_ITER*/; i++)
+    for (int i = 0; i < MAX_ITER; i++)
     {
         counter = i + 1;
         z = z * z + c;
@@ -72,9 +72,9 @@ size_t ComplexPlane::countIterations(Vector2f coord)
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
 
-    int step = 64/*MAX_ITER*//5;
+    int step = MAX_ITER/5;
 
-    if (count == 64/*MAX_ITER*/)
+    if (count == MAX_ITER   )
     {
         r = 0;
         g = 0;

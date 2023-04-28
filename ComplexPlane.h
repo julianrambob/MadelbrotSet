@@ -2,6 +2,11 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
+		const int MAX_ITER = 64;
+		const float BASE_WIDTH = 4.0;
+		const float BASE_HEIGHT = 4.0;
+		const float BASE_ZOOM = 0.5;
+
 class ComplexPlane
 {
 	private:
@@ -12,10 +17,7 @@ class ComplexPlane
 
 	public:
 
-		const int MAX_ITER = 64;
-		const float BASE_WIDTH = 4.0;
-		const float BASE_HEIGHT = 4.0;
-		const float BASE_ZOOM = 0.5;
+
 
 		ComplexPlane(float aspectRatio);
 		void zoomIn();
